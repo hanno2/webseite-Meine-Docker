@@ -44,3 +44,26 @@ If you are developing a production application, we recommend using TypeScript wi
 **.gitignore:** beeinflusst, was in Git gespeichert wird.
 
 **.dockerignore:** beeinflusst, was in den Docker-Build gelangt.
+
+🧠 Hintergrundwissen zu Docker
+🔒 Namensräume: Warum <username>/<repository> wichtig ist
+
+Das Format <username>/<repository> sorgt auf Docker Hub für klare Namensräume und verhindert Namenskonflikte. Wenn jeder sein Image einfach nur meine-webseite nennen könnte, gäbe es Chaos:
+
+    Images verschiedener Entwickler würden sich gegenseitig überschreiben
+
+    Nutzer könnten nicht sicher sein, welches Image sie wirklich verwenden
+
+    Sicherheitsrisiken durch versehentliches Verwenden falscher Images
+
+Durch den Namensraum ist z. B. hanno2/meine-webseite eindeutig dir zugeordnet.
+🏷️ Tag vs. Build: Unterschied zwischen docker tag und docker build -t
+
+    docker build -t neuer-name . → Erstellt ein neues Image aus dem aktuellen Verzeichnis und gibt ihm direkt einen Namen und Tag.
+
+    docker tag alter-name neuer-name → Erstellt kein neues Image, sondern nur einen neuen Verweis (Alias) auf ein bestehendes Image. Das Image bleibt identisch – es wird nur unter einem anderen Namen referenziert.
+
+💡 Merksatz: build erzeugt ein neues Image, tag erzeugt nur einen neuen Namen dafür.
+📌 Versionierung: Welchen Tag nach einem Bugfix?
+
+Wenn du einen kleinen Fehler behoben hast, wäre ein neuer Tag wie 1.0.1 passend. Das folgt dem Prinzip der
